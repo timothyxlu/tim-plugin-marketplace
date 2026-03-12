@@ -179,9 +179,9 @@ web_fetch url="<article_url>" html_extraction_method="markdown" text_content_tok
  
 **Fetch rules:**
 - Fetch articles **in parallel** — launch multiple `web_fetch` calls concurrently since they are independent. Do not skip any.
-- If a fetch genuinely fails (timeout, 403, paywall), fall back to TLDR's own blurb for the short summary and note the failure in the detailed summary. Use the output language from Step 0 — e.g., Chinese: "⚠️ 原文无法访问（已尝试抓取，返回错误：[具体错误]）", English: "⚠️ Original article unavailable (fetch attempted, error: [specific error])"
-- For paywalled sites, use whatever preview content is available
-- Set a reasonable token limit: `text_content_token_limit=4000`
+- If a fetch genuinely fails (timeout, 403, paywall), try `web_search` with the article title to find alternative coverage or cached content. If web search also fails, fall back to TLDR's own blurb for the short summary and note the failure in the detailed summary. Use the output language from Step 0 — e.g., Chinese: "⚠️ 原文无法访问（已尝试抓取及搜索，返回错误：[具体错误]）", English: "⚠️ Original article unavailable (fetch and search attempted, error: [specific error])"
+- For paywalled sites, use whatever preview content is available from `web_fetch`, or search for alternative coverage via `web_search`
+- Set a reasonable token limit: `text_content_token_limit=8000`
  
 ### Step 4: Generate Summaries
  
@@ -280,8 +280,10 @@ Detailed summary here...
 - If Gmail search returns no results, inform the user and suggest checking their subscriptions
 - If `gmail_read_message` returns an empty body, try the next most recent email
 - If an **individual article fetch fails** (and ONLY after actually attempting the fetch):
-  - Use TLDR's own blurb (from the email body) as the short summary
-  - In the detailed summary block, note the failure in the output language from Step 0 — e.g., Chinese: "⚠️ 原文无法访问（已尝试抓取，返回错误：[具体错误]）— 仅使用 TLDR 提供的简介", English: "⚠️ Original article unavailable (fetch attempted, error: [specific error]) — using TLDR blurb only"
-- **NEVER write a fetch-failure notice without having actually called `web_fetch` on that URL first**
+  - Try `web_search` with the article title to find alternative coverage
+  - If search finds usable content, summarize from that source and note it
+  - If both fetch and search fail, use TLDR's own blurb as the short summary
+  - In the detailed summary block, note the failure in the output language from Step 0 — e.g., Chinese: "⚠️ 原文无法访问（已尝试抓取及搜索）— 仅使用 TLDR 提供的简介", English: "⚠️ Original article unavailable (fetch and search attempted) — using TLDR blurb only"
+- **NEVER write a fetch-failure notice without having actually called `web_fetch` and `web_search` first**
 - If the email body structure doesn't match expected format, fall back to best-effort parsing and note any issues
  

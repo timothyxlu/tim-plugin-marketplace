@@ -36,7 +36,7 @@ Save the assembled Markdown file to the user's workspace:
 
 ## Step 5: Save to Notion
 
-Automatically save the digest to the 📰 TLDR database (data source ID: `31bb9f47-52ed-8093-b385-000c5acdf49`):
+Automatically save the digest to the notion “原始资料”data source, category field is “业界新闻”
 
 **Properties:**
 - **标题**: Newsletter name and date (e.g., "TLDR AI - 2026-03-10")
