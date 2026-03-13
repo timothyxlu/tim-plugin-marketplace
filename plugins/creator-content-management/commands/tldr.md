@@ -85,7 +85,23 @@ Save the script to: `{workspace}/outputs/tldr-{category}-podcast-YYYY-MM-DD.txt`
 
 Search Notion for the "Podcasts" database. Create a new page under it with these properties:
 
-- **Name/Title**: "今日AI - YYYY-MM-DD"(use the actual date)
+- **名称**: "今日AI - YYYY-MM-DD"(use the actual date)
+- **简介**: 每条新闻的简短总结，示例如下:
+
+----
+今日AI · 2026年3月12日
+
+本期要点：
+- Cursor融资目标500亿美元，AI编程赛道军备竞赛白热化
+- Replit Agent 4：无限设计画布 + 并行代理
+- Perplexity Personal Computer：本地化AI助手新方向
+- Meta四款自研AI芯片部署路线图
+- OpenAI提示注入防御：从"防火墙"到"限制影响范围"
+- Autoresearch：Karpathy和Shopify CEO的实战案例
+- NVIDIA Nemotron 3 Super：120B参数，12B激活
+- Google "Thinking to Recall"：推理为何能提升事实准确率
+- Anthropic vs. 美国国防部：AI治理的关键博弈
+----
 
 Then update the page content with the full TTS script from Step 6, preserving plain text formatting with paragraph breaks.
 
