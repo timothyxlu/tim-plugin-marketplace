@@ -42,10 +42,11 @@ Search Notion for the “原始资源” data source. Create a new empty page un
 - **来源**: “View Online” URL from the email
 - **类别**: “业界新闻”
 
-Then start to update the page gradually following below rules:
+Then update the page using one tool call per news following below rules:
 
 **Notion formatting rules:**
 
 When saving to Notion, adjust the Markdown format:
 - **短摘要**: Plain paragraph text with `📋` prefix — do NOT wrap in blocks
 - **详细摘要**: Wrap in block with `<summary>📖 详细摘要</summary>`
+- **Reserving Content**: Do not compact content when upload to Notion.
