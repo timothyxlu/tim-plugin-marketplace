@@ -36,59 +36,16 @@ Save the assembled Markdown file to the user's workspace:
 
 ## Step 5: Save to Notion
 
-Use `notion-create-pages` to save the digest. First use `notion-search` to find the “原始资源” data source and get its `data_source_id`.
+Search Notion for the “原始资源” data source. Create a new empty page under it with these properties first:
 
-**Important**: `parent` is a separate top-level field, not inside each page. `pages` is a required array. Example:
-
-```json
-{
-  “parent”: {
-    “type”: “data_source_id”,
-    “data_source_id”: “<data_source_id from notion-search>”
-  },
-  “pages”: [
-    {
-      “properties”: {
-        “名称”: “TLDR AI - 2026-03-10”,
-        “来源”: “<View Online URL from the email>”,
-        “类别”: “业界新闻”
-      },
-      “content”: “<full markdown content>”
-    }
-  ]
-}
-```
-
-**Properties:**
 - **名称**: Newsletter name and date (e.g., “TLDR AI - 2026-03-10”)
 - **来源**: “View Online” URL from the email
 - **类别**: “业界新闻”
 
+Then start to update the page gradually following below rules:
+
 **Notion formatting rules:**
 
 When saving to Notion, adjust the Markdown format:
-- **短摘要**: Plain paragraph text with `📋` prefix — do NOT wrap in `<details>` blocks
-- **详细摘要**: Wrap in `<details>` block with `<summary>📖 详细摘要</summary>`
-
-```markdown
-### [Article Title](https://link)
-**X minute read**
-
-📋 短摘要内容直接显示在这里，不折叠...
-
-<details>
-<summary>📖 详细摘要</summary>
-
-详细摘要内容...
-
-</details>
-
----
-```
-
-**Forbidden formats** (even if used in the past):
-- ❌ Short summary with `**📋 短摘要**` bold text on its own line
-- ❌ Short summary wrapped in `<details>` block
-- ✅ Short summary = plain paragraph text starting with `📋`
-
-**Important**: Always include a blank line after `<summary>` tag and before content, and a blank line before `</details>` tag.
+- **短摘要**: Plain paragraph text with `📋` prefix — do NOT wrap in blocks
+- **详细摘要**: Wrap in block with `<summary>📖 详细摘要</summary>`
