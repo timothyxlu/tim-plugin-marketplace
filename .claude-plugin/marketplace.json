@@ -10,7 +10,7 @@
     {
       "name": "creator-content-management",
       "description": "Personal content management — create platform-optimized posts, podcasts and video, manage content workflows.",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "author": {
         "name": "Tim Lu",
         "email": "admin@timothylu.xyz"
